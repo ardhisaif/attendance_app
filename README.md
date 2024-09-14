@@ -1,24 +1,33 @@
-# README
+# Belajar Unit Testing di Ruby on Rails
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Persiapan
+Sebelum memulai unit testing, pastikan Anda telah menginstal Ruby on Rails dan memiliki proyek Rails yang siap untuk diuji.
 
-Things you may want to cover:
+## Menulis Unit Test
+Ruby on Rails menggunakan framework `Minitest` untuk menulis dan menjalankan unit test. Berikut adalah langkah-langkah dasar untuk menulis unit test:
 
-* Ruby version
+1. **Buat File Test**: Buat file test di dalam direktori `test/models` atau `test/controllers`.
+2. **Tulis Test Case**: Gunakan kelas `ActiveSupport::TestCase` untuk menulis test case.
+3. **Jalankan Test**: Gunakan perintah `rails test` untuk menjalankan semua test.
 
-* System dependencies
+### Contoh
+Berikut adalah contoh sederhana unit test untuk model `User`:
 
-* Configuration
+```ruby
+# test/models/user_test.rb
+require 'test_helper'
 
-* Database creation
+class UserTest < ActiveSupport::TestCase
+  test "should not save user without email" do
+    user = User.new
+    assert_not user.save, "Saved the user without an email"
+  end
+end
+```
 
-* Database initialization
+## Menjalankan Test
+Untuk menjalankan semua test, gunakan perintah berikut di terminal:
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```sh
+rails test
+```
